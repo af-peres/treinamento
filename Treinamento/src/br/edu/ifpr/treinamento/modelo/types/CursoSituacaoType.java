@@ -1,7 +1,8 @@
 package br.edu.ifpr.treinamento.modelo.types;
 
-public enum CursoSituacaoType
-{
+public enum CursoSituacaoType {
     
+    INICIADO,
+    TERMINADO;
 
 }

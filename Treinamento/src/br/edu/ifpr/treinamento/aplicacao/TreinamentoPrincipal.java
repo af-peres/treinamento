@@ -27,9 +27,9 @@ public class TreinamentoPrincipal {
     private void initProcessors() {
        ap  = new AlunoProcessor(js);
        ip  = new InstrutorProcessor(js);
-       //mop = new ModuloProcessor(js);
-       //cp  = new CursoProcessor(js);
-       //map = new MatriculaProcessor(js);
+       mop = new ModuloProcessor(js);
+       cp  = new CursoProcessor(js);
+       map = new MatriculaProcessor(js);
     }
   
     public TreinamentoPrincipal() {
@@ -41,9 +41,11 @@ public class TreinamentoPrincipal {
        initProcessors();
        ap.processAlunos();
        ip.processInstrutores();
-//       mop.processModulos();
-//       cp.processCursos();
-//       map.processMatriculas();
+       mop.processModulos();
+       cp.processCursos();
+       map.processMatriculas();
+       //ap.processAlunos();
+       //ip.processInstrutores();
   
        System.out.println("@@@ ENCERRANDO PERSISTÊNCIA @@@");
        closeEntityManagerFactory();

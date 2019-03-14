@@ -12,6 +12,7 @@ import javax.persistence.TypedQuery;
 
 import br.edu.ifpr.treinamento.modelo.Instrutor;
 import br.edu.ifpr.treinamento.modelo.service.command.JpaPersistenceDAO;
+import br.edu.ifpr.utils.formatter.CpfFormatter;
 
 public class InstrutorPersistenceDAO implements JpaPersistenceDAO<String, Instrutor>
 {
@@ -82,7 +83,8 @@ public class InstrutorPersistenceDAO implements JpaPersistenceDAO<String, Instru
  
       createEntityManager();
  
-      Instrutor dado = get("Instrutor.findByCpf","cpf",key);
+      Instrutor dado = get("Instrutor.findByCpf","cpf",CpfFormatter.formatCpf(key));
+
       if (dado != null) {
          em.getTransaction().begin();
          em.remove(dado);
@@ -120,7 +122,7 @@ public class InstrutorPersistenceDAO implements JpaPersistenceDAO<String, Instru
     public Instrutor select(String key) {
       createEntityManager();
  
-      Instrutor dado = get("Instrutor.findByCpf","cpf",key);
+      Instrutor dado = get("Instrutor.findByCpf","cpf",CpfFormatter.formatCpf(key));
  
       closeEntityManager();
  

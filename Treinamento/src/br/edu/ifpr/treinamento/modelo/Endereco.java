@@ -1,13 +1,16 @@
 package br.edu.ifpr.treinamento.modelo;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import br.edu.ifpr.treinamento.modelo.types.EnderecoType;
 import br.edu.ifpr.treinamento.modelo.types.UfType;
+import br.edu.ifpr.utils.formatter.CepFormatter;
 
+@Entity
 public class Endereco
 {
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -16,9 +19,9 @@ public class Endereco
     
     @Column(name="END_LOGRADOURO",nullable=false)
     private String logradouro;
-    @Column(name="END_NUM")
+    @Column(name="END_NUMERO")
     private String numero;
-    @Column(name="END_COMP")
+    @Column(name="END_COMPLEMENTO")
     private String complemento;
     @Column(name="END_BAIRRO")
     private String bairro;
@@ -43,11 +46,20 @@ public class Endereco
         this.numero = numero;
         this.complemento = complemento;
         this.bairro = bairro;
-        this.cep = cep;
+        this.cep = CepFormatter.formatCep(cep);
         this.cidade = cidade;
         this.uf = uf;
         this.tipo = endereco;
     }
-    
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString()
+    {
+        return " [logradouro=" + logradouro + ", numero=" + numero + ", complemento=" + complemento
+                + ", bairro=" + bairro + ", cep=" + cep + ", cidade=" + cidade + ", uf=" + uf + ", tipo=" + tipo + "]";
+    }
 
 }

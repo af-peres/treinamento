@@ -19,7 +19,7 @@ public class TelefoneFormatter
 
      public static String formatNumero(final String numeroFone) {
         if (!TelefoneValidator.validateNumero(numeroFone))
-           throw new IllegalArgumentException("FORMAT: número do telefone " +
+           throw new IllegalArgumentException("FORMAT: " + numeroFone +
                                               "inválido");
         int pos = 4;
 

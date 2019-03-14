@@ -30,7 +30,7 @@ public class InstrutorProcessor
 
     private void print(Instrutor dado)
     {
-        System.out.println(dado);
+        System.out.println(dado==null?"NENHUM INSTRUTOR ENCONTRADO":dado);
     }
 
     private void print(List<Instrutor> dados)
@@ -44,51 +44,55 @@ public class InstrutorProcessor
 
     private void populate(List<Instrutor> dados)
     {
-        // (Rua, numero, complemento, bairro, cep, Cidade, Estado, EnderecoType)
         Endereco e1 = new Endereco("Brasil", "78", "casa", "cafezal", "86045680", "Londrina", UfType.PARANA, EnderecoType.COMERCIAL);
-        /*Endereco e2 = new Endereco("", "", "", "", "", "", null, null);
-        Endereco e3 = new Endereco("", "", "", "", "", "", null, null);
-        Endereco e4 = new Endereco("", "", "", "", "", "", null, null);
-        Endereco e5 = new Endereco("", "", "", "", "", "", null, null);
-        Endereco e6 = new Endereco("", "", "", "", "", "", null, null);
-        Endereco e7 = new Endereco("", "", "", "", "", "", null, null);
-        Endereco e8 = new Endereco("", "", "", "", "", "", null, null);
-        Endereco e9 = new Endereco("", "", "", "", "", "", null, null);
-        Endereco e10 = new Endereco("", "", "", "", "", "", null, null);*/
-        // (DDD, numero, TelefoneType)
         Telefone t1 = new Telefone("67", "25345219", TelefoneType.COMERCIAL);
-        /*Telefone t2 = new Telefone("", "", null);
-        Telefone t3 = new Telefone("", "", null);
-        Telefone t4 = new Telefone("", "", null);
-        Telefone t5 = new Telefone("", "", null);
-        Telefone t6 = new Telefone("", "", null);
-        Telefone t7 = new Telefone("", "", null);
-        Telefone t8 = new Telefone("", "", null);
-        Telefone t9 = new Telefone("", "", null);
-        Telefone t10 = new Telefone("", "", null);*/
-        // (cpf, nome, rg, dataNasc, SexoType, PessoaType, endereco, telefone)
-        Instrutor a1 = new Instrutor("85716565840", "Pietro José Teixeira", "262912399", new Date(96,10,17), SexoType.MASCULINO, PessoaType.INSTRUTOR, t1);
-        /*Instrutor a2 = new Instrutor("", "", "", null, null, null, null, new Telefone());
-        Instrutor a3 = new Instrutor("", "", "", null, null, null, null, new Telefone());
-        Instrutor a4 = new Instrutor("", "", "", null, null, null, null, new Telefone());
-        Instrutor a5 = new Instrutor("", "", "", null, null, null, null, new Telefone());
-        Instrutor a6 = new Instrutor("", "", "", null, null, null, null, new Telefone());
-        Instrutor a7 = new Instrutor("", "", "", null, null, null, null, new Telefone());
-        Instrutor a8 = new Instrutor("", "", "", null, null, null, null, new Telefone());
-        Instrutor a9 = new Instrutor("", "", "", null, null, null, null, new Telefone());
-        Instrutor a10 = new Instrutor("", "", "", null, null, null, null, new Telefone());*/
-
+        Instrutor a1 = new Instrutor("85716565840", "Pietro José Teixeira", "262912399", "teste@teste",new Date(96,10,17), SexoType.MASCULINO, PessoaType.INSTRUTOR,e1, t1,"566");
         dados.add(a1);
-        /*dados.add(a2);
-        dados.add(a3);
-        dados.add(a4);
-        dados.add(a5);
-        dados.add(a6);
-        dados.add(a7);
-        dados.add(a8);
-        dados.add(a9);
-        dados.add(a10);*/
-
+        
+        e1 = new Endereco("Rua das Acácias", "787", "Casa", "Águas Negras (Icoaraci)", "66822680", "Belém",UfType.PARA, EnderecoType.RESIDENCIAL);
+        t1 = new Telefone("91","988831036",TelefoneType.RESIDENCIAL);
+        a1 = new Instrutor("74983194460", "Daniel Iago Filipe Galvão", "283538661","teste2@teste.com", new Date (96,10,7), SexoType.MASCULINO, PessoaType.INSTRUTOR,e1, t1,"856");
+        dados.add(a1);
+        
+        e1 = new Endereco("Avenida Pioneiro Heitor Olsen", "243", "Bloco A", "Alpha Parque", "76965391", "Cacoal", UfType.RORAIMA, EnderecoType.COMERCIAL);
+        t1 = new Telefone("69","39727407",TelefoneType.COMERCIAL);
+        a1 = new Instrutor("06384635640", "Luiz Geraldo Campos", "423942128", "luizgeraldocampos__luizgeraldocampos@avantii.com.br", new Date(81,8,14), SexoType.MASCULINO, PessoaType.INSTRUTOR, e1, t1,"789");
+        dados.add(a1);
+        
+        e1 = new Endereco("Quadra 399", "562", "Quadra", "Mansões de Recreio Estrela Dalva VIII", "72859399", "Luziânia", UfType.GOIAS, EnderecoType.COMERCIAL);
+        t1 = new Telefone("61","984442352",TelefoneType.COMERCIAL);
+        a1 = new Instrutor("16105789882", "Priscila Elza Vera Porto", "126785612", "ppriscilaelzaveraporto@temavonfeccaosjc.com.br", new Date(62,1,22), SexoType.FEMININO, PessoaType.INSTRUTOR, e1, t1,"742");
+        dados.add(a1);
+        
+        e1 = new Endereco("Travessa Bereia", "874", "casa", "Cidade de Deus", "22763410", "Rio de Janeiro", UfType.RIO_JANEIRO, EnderecoType.RESIDENCIAL);
+        t1 = new Telefone("21","38681557",TelefoneType.RESIDENCIAL);
+        a1 = new Instrutor("55270575388", "Maria Esther Rezende", "211781897", "mariaestherrezende_@profiledesign.com.br", new Date(73,5,20), SexoType.FEMININO, PessoaType.INSTRUTOR, e1, t1,"745");
+        dados.add(a1);
+        
+        e1 = new Endereco("Avenida General Bento da Gama", "592", "casa dos fundos", "Ipsep", "51350450", "Recife", UfType.PERNAMBUCO, EnderecoType.RESIDENCIAL);
+        t1 = new Telefone("81", "28823050", TelefoneType.RESIDENCIAL);
+        a1 = new Instrutor("99827916050", "Raul Emanuel Assunção", "474066915", "raulemanuelassuncao..raulemanuelassuncao@cuppari.com.br", new Date(76,6,17), SexoType.MASCULINO, PessoaType.INSTRUTOR, e1, t1,"458");
+        dados.add(a1);
+        
+        e1 = new Endereco("Rua Nemésio Fabrício", "913", "apt 305", "Aeroporto", "97513750", "Uruguaiana", UfType.RIO_GRANDE_SUL, EnderecoType.RESIDENCIAL);
+        t1 = new Telefone("55","985907910",TelefoneType.RESIDENCIAL);
+        a1 = new Instrutor("13199860303", "Joaquim Bernardo Freitas", "266912333", "jjoaquimbernardofreitas@andrelam.com.br", new Date(87,9,20),SexoType.MASCULINO, PessoaType.INSTRUTOR, e1, t1,"1236");
+        dados.add(a1);
+        
+        e1 = new Endereco("Quadra SHIGS 710 Bloco Q", "931", "Quadra", "Asa Sul", "70360767", "Brasília", UfType.DISTRITO_FEDERAL, EnderecoType.RESIDENCIAL);
+        t1 = new Telefone("61","37918049",TelefoneType.RESIDENCIAL);
+        a1 = new Instrutor("47027742632", "Alexandre Ruan da Costa", "428796278", "alexandreruandacosta..alexandreruandacosta@gmapst.com", new Date(68,6,16), SexoType.MASCULINO, PessoaType.INSTRUTOR, e1, t1,"6548");
+        dados.add(a1);
+        
+        e1 = new Endereco("Rua Severina Crispim Veras", "967", "Casa B", "Planalto Boa Esperança", "58065075", "João Pessoa", UfType.PARAIBA, EnderecoType.RESIDENCIAL);
+        t1 = new Telefone("83","39661462",TelefoneType.RESIDENCIAL);
+        a1 = new Instrutor("39476493984", "Valentina Hadassa Maya Costa", "232303745", "valentinahadassamayacosta..valentinahadassamayacosta@tecsysbrasil.com.br", new Date(100,0,16), SexoType.FEMININO, PessoaType.INSTRUTOR, e1, t1,"748");
+        dados.add(a1);
+        
+        e1 = new Endereco("Rua Joinville","963","loja 12","Setor 09","76876200","Ariquemes",UfType.RORAIMA,EnderecoType.COMERCIAL);
+        t1 = new Telefone("69", "987147476", TelefoneType.COMERCIAL);
+        a1  =new Instrutor("39536283999", "Pietra Carolina Ribeiro", "350926025", "pietracarolinaribeiro__pietracarolinaribeiro@unimedrio.com.br", new Date(89,11,23), SexoType.MASCULINO, PessoaType.INSTRUTOR, e1, t1,"125");
+        dados.add(a1);
     }
 
     private int insert()
@@ -113,7 +117,7 @@ public class InstrutorProcessor
 
         Endereco e1 = new Endereco("Brasil", "78", "casa", "cafezal", "86045680", "Londrina", UfType.PARANA, EnderecoType.COMERCIAL);
         Telefone t1 = new Telefone("67", "25345219", TelefoneType.COMERCIAL);
-        Instrutor a1 = new Instrutor("85716565841", "Pietro José Teixeira", "262912399", new Date(96,10,17), SexoType.MASCULINO, PessoaType.INSTRUTOR, t1);
+        Instrutor a1 = new Instrutor("12296785069", "Pietro José Teixeira", "262912399","pietro@gmail.com", new Date(96,10,17), SexoType.MASCULINO, PessoaType.INSTRUTOR, e1,t1,"745");
 
         System.out.println("INCLUIDO [" + ip.insert(a1) + "]");
     }
@@ -142,7 +146,7 @@ public class InstrutorProcessor
             System.out.println("ALTERADO [" + valorBusca + "]");
         } else
         {
-            System.out.println("[" + valorBusca + " NÃO ENCONTRADO");
+            System.out.println("[" + valorBusca + " NÃO ENCONTRADO]");
         }
     }
 
@@ -150,7 +154,7 @@ public class InstrutorProcessor
     {
         int deleted = ip.delete(valorBusca);
 
-        if (deleted == 0)
+        if (deleted == 1)
         {
             System.out.println("EXCLUIDO [" + valorBusca + "]");
         } else
@@ -173,12 +177,12 @@ public class InstrutorProcessor
     {
         if (valorBusca == null)
         {
-            List<Instrutor> dados = new ArrayList<>(/* ? */);
+            List<Instrutor> dados = (List<Instrutor>) ip.select();
             print(dados);
         } else
         {
-            print(new Instrutor());
-        } // sera modificado
+            print(ip.select(valorBusca));
+        }
     }
 
     public void processInstrutores()
@@ -212,33 +216,33 @@ public class InstrutorProcessor
         System.out.println("\n===> BUSCAR INSTRUTORES <===");
         processSelect();
 
-        String cpf = "25692096862";
+        String cpf = "55270575388";
         System.out.println("\n===> BUSCAR INSTRUTOR EXISTENTE [" + cpf + "] <===");
         processSelect(cpf);
 
-        cpf = "11111111111";
+        cpf = "12345678909";
         System.out.println("\n===> BUSCAR INSTRUTOR NAO EXISTENTE [" + cpf + "] <===");
         processSelect(cpf);
 
-        cpf = "53451383039";
-        Endereco endereco = new Endereco("", "", "", "", "", "", null, null);
-        Telefone telefone = new Telefone("", "", null);
-        Instrutor instrutor = new Instrutor("", "", "", null, null, null, null, new Telefone());
+        cpf = "55270575388";
+        Endereco endereco = new Endereco("rua 1000", "152", "fundos", "bairro 12", "86253351", "Londrina", UfType.PARANA, EnderecoType.RESIDENCIAL);
+        Telefone telefone = new Telefone("43", "33268956", TelefoneType.RESIDENCIAL);
+        Instrutor instrutor = new Instrutor("55270575388", "", "", null, null, null, null,endereco,telefone,"005");
         System.out.println("\n===> ALTERAR INSTRUTOR EXISTENTE [" + cpf + "] <===");
         processUpdate(cpf, instrutor);
 
-        cpf = "11111111111";
+        cpf = "12345678909";
         System.out.println("\n===> ALTERAR INSTRUTOR NAO EXISTENTE [" + cpf + "] <===");
         processUpdate(cpf, instrutor);
 
         System.out.println("\n===> BUSCAR INSTRUTORES <===");
         processSelect();
 
-        cpf = "22222222222";
+        cpf = "12345678909";
         System.out.println("\n===> EXCLUIR INSTRUTOR NÃO EXISTENTE [" + cpf + "] <===");
         processDelete(cpf);
 
-        cpf = "73711832318";
+        cpf = "74983194460";
         System.out.println("\n===> EXCLUIR INSTRUTOR EXISTENTE [" + cpf + "] <===");
         processDelete(cpf);
 

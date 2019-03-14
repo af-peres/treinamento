@@ -1,11 +1,13 @@
 package br.edu.ifpr.treinamento.modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
 import br.edu.ifpr.treinamento.modelo.types.PessoaType;
@@ -14,7 +16,7 @@ import br.edu.ifpr.treinamento.modelo.types.SexoType;
 @Entity
 public class Instrutor extends Pessoa
 {
-    @Column(name="INS_CODIGO")
+   @Column(name="INS_CODIGO")
     private String codigo;
     
     @Transient
@@ -23,40 +25,37 @@ public class Instrutor extends Pessoa
     public Instrutor()
     {
         super();
+        this.modulos = new ArrayList();
     }
 
     public Instrutor(String cpf, String nome, String rg, Date nascimento, SexoType sexo, PessoaType tipo,
             List<Telefone> fones)
     {
         super(cpf, nome, rg, nascimento, sexo, tipo, fones);
-        // TODO Auto-generated constructor stub
     }
 
     public Instrutor(String cpf, String nome, String rg, Date nascimento, SexoType sexo, PessoaType tipo, Telefone fone)
     {
         super(cpf, nome, rg, nascimento, sexo, tipo, fone);
-        // TODO Auto-generated constructor stub
     }
 
     public Instrutor(String cpf, String nome, String rg, String email, Date nascimento, SexoType sexo, PessoaType tipo,
             Endereco endereco, List<Telefone> fones)
     {
         super(cpf, nome, rg, email, nascimento, sexo, tipo, endereco, fones);
-        // TODO Auto-generated constructor stub
     }
 
     public Instrutor(String cpf, String nome, String rg, String email, Date nascimento, SexoType sexo, PessoaType tipo,
-            Endereco endereco, Telefone fone)
+            Endereco endereco, Telefone fone,String cod)
     {
         super(cpf, nome, rg, email, nascimento, sexo, tipo, endereco, fone);
-        // TODO Auto-generated constructor stub
+        this.codigo = cod;
     }
 
     public Instrutor(String cpf, String nome, String rg, String email, Date nascimento, SexoType sexo, PessoaType tipo,
             Telefone fone)
     {
         super(cpf, nome, rg, email, nascimento, sexo, tipo, fone);
-        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -90,6 +89,25 @@ public class Instrutor extends Pessoa
     {
         this.modulos = modulos;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Instrutor [codigo=" + codigo + ", modulos=" + modulos.size() + ", " + super.toString() + "]";
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    /*@Override
+    public String toString()
+    {
+        return "Instrutor [codigo=" + codigo + ", modulos=" + modulos.size() + ", " + super.toString() + "]";
+    }*/
+    
+    
+    
+    
     
 
 }

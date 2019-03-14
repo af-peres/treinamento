@@ -7,16 +7,25 @@
 <persistence-unit name="treinamento">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		
-		<mapping-file>META-INF\queries\AlunoNamedQueries.xml</mapping-file>
-		<mapping-file>META-INF\queries\InstrutorNamedQueries.xml</mapping-file>
+<!-- 	 	<mapping-file>META-INF/orm.xml</mapping-file> -->
+		<mapping-file>META-INF/queries/AlunoNamedQueries.xml</mapping-file>
+		<mapping-file>META-INF/queries/InstrutorNamedQueries.xml</mapping-file>
+		<mapping-file>META-INF/queries/ModuloNamedQueries.xml</mapping-file>
+		<mapping-file>META-INF/queries/CursoNamedQueries.xml</mapping-file>
+	 	<mapping-file>META-INF/queries/MatriculaNamedQueries.xml</mapping-file>
 		
 		<class>br.edu.ifpr.treinamento.modelo.Endereco</class>
 		<class>br.edu.ifpr.treinamento.modelo.Telefone</class>
 		<class>br.edu.ifpr.treinamento.modelo.Pessoa</class>
 		<class>br.edu.ifpr.treinamento.modelo.Instrutor</class>
 		<class>br.edu.ifpr.treinamento.modelo.Aluno</class>
+		<class>br.edu.ifpr.treinamento.modelo.Modulo</class>
+		<class>br.edu.ifpr.treinamento.modelo.Curso</class>
+ 		<class>br.edu.ifpr.treinamento.modelo.ids.MatriculaId</class>
+		<class>br.edu.ifpr.treinamento.modelo.Matricula</class>
 		
 		<properties>
+					<property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.H2Platform"/>
 					<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:treinamento"/>
 					<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
 					<property name="javax.persistence.jdbc.user" value="user"/>

@@ -4,19 +4,33 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.AssociationOverride;
+import javax.persistence.AssociationOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Transient;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 import br.edu.ifpr.treinamento.modelo.types.PessoaType;
 import br.edu.ifpr.treinamento.modelo.types.SexoType;
 
 @Entity
+@AssociationOverrides({
+    @AssociationOverride (name="fones",
+            joinColumns = @JoinColumn (name= "ALU_TEL_PES_CPF"))
+})
 public class Aluno extends Pessoa
 {
+    
     @Column(name="ALU_CODIGO")
     private String codigo;
-    @Transient
+    
+    @OneToMany(mappedBy="aluno", orphanRemoval=true, fetch=FetchType.EAGER)
+    @JoinColumn(name="MAT_PES_CPF", referencedColumnName="PES_CPF")
     private List<Matricula> matriculas;
     
     public Aluno()
@@ -49,6 +63,14 @@ public class Aluno extends Pessoa
             Endereco endereco, Telefone fone)
     {
         super(cpf, nome, rg, email, nascimento, sexo, PessoaType.ALUNO, endereco, fone);
+        // TODO Auto-generated constructor stub
+    }
+    
+    public Aluno(String cpf, String nome, String rg, String email, Date nascimento, SexoType sexo,
+            Endereco endereco, Telefone fone, String cod)
+    {
+        super(cpf, nome, rg, email, nascimento, sexo, PessoaType.ALUNO, endereco, fone);
+        this.codigo=cod;
         // TODO Auto-generated constructor stub
     }
     
@@ -93,6 +115,15 @@ public class Aluno extends Pessoa
             return false;
         return true;
     }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "Aluno [codigo=" + codigo + ", matriculas=" + matriculas.size() + ", " + super.toString() + "]";
+    }
+    
     
     
 }

@@ -1,6 +1,5 @@
 package br.edu.ifpr.treinamento.modelo.service;
 
-//TODO ARRUMAR
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 

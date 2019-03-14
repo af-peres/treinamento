@@ -2,14 +2,54 @@ package br.edu.ifpr.treinamento.modelo;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import br.edu.ifpr.utils.date.DateTimeUtils;
+
+@Entity
 public class Modulo
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "MOD_ID", nullable = false)
+    private Long id;
+
+    @Column(name = "MOD_NOME")
     private String nome;
+
+    @Column(name = "MOD_DURACAO")
     private Integer duracao;
+
+    @Temporal(value = TemporalType.DATE)
+    @Column(name = "MOD_DT_INIC", nullable = false)
     private java.util.Date inicio;
+
+    @OneToOne(optional = true)
+    @JoinColumn(name = "MOD_INSTR_CPF", referencedColumnName = "PES_CPF")
     private Instrutor instrutor;
+
+    public Modulo()
+    {
+        
+    }
     
-    
+    public Modulo(String nome, Integer duracao, Date inicio, Instrutor instrutor)
+    {
+        this.nome = nome;
+        this.duracao = duracao;
+        this.inicio = inicio;
+        this.instrutor = instrutor;
+    }
+
     /**
      * @return the nome
      */
@@ -17,7 +57,6 @@ public class Modulo
     {
         return nome;
     }
-
 
     /**
      * @param nome the nome to set
@@ -27,7 +66,6 @@ public class Modulo
         this.nome = nome;
     }
 
-
     /**
      * @return the duracao
      */
@@ -35,7 +73,6 @@ public class Modulo
     {
         return duracao;
     }
-
 
     /**
      * @param duracao the duracao to set
@@ -45,7 +82,6 @@ public class Modulo
         this.duracao = duracao;
     }
 
-
     /**
      * @return the inicio
      */
@@ -53,7 +89,6 @@ public class Modulo
     {
         return inicio;
     }
-
 
     /**
      * @param inicio the inicio to set
@@ -63,7 +98,6 @@ public class Modulo
         this.inicio = inicio;
     }
 
-
     /**
      * @return the instrutor
      */
@@ -71,7 +105,6 @@ public class Modulo
     {
         return instrutor;
     }
-
 
     /**
      * @param instrutor the instrutor to set
@@ -81,18 +114,16 @@ public class Modulo
         this.instrutor = instrutor;
     }
 
-
-    public Modulo(String nome, Integer duracao, Date inicio, Instrutor instrutor)
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString()
     {
-        this.nome = nome;
-        this.duracao = duracao;
-        this.inicio = inicio;
-        this.instrutor = instrutor;
+        return "Modulo [nome=" + nome + ", duracao=" + duracao + ", inicio=" + DateTimeUtils.formatDate(inicio) + ", " + instrutor
+                + "]";
     }
 
 
-    public Modulo()
-    {
-        // TODO Auto-generated constructor stub
-    }
+    
 }

@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import br.edu.ifpr.treinamento.modelo.types.TelefoneType;
+import br.edu.ifpr.utils.formatter.TelefoneFormatter;
 
 @Entity
 public class Telefone
@@ -17,7 +18,7 @@ public class Telefone
     @Column(name="END_ID")
     private Long id;
     
-    @Column(name="TEL_DDD",nullable=false,length=2)
+    @Column(name="TEL_DDD",nullable=false,length=5)
     private String ddd;
     
     @Column(name="TEL_NUMERO",nullable=false)
@@ -29,8 +30,8 @@ public class Telefone
 
     public Telefone(String ddd, String numero, TelefoneType tipo)
     {
-        this.ddd = ddd;
-        this.numero = numero;
+        this.ddd = TelefoneFormatter.formatDdd(ddd, true);
+        this.numero = TelefoneFormatter.formatNumero(numero);
         this.tipo = tipo;
     }
 
@@ -39,4 +40,13 @@ public class Telefone
         
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString()
+    {
+        return "["+ddd + " " + numero + "| " + tipo+"]";
+    }
+    
 }
